@@ -1,0 +1,6 @@
+.idea/
+MyExpense.iml
+deploy-local.sh
+target/
+temp.txt
+
