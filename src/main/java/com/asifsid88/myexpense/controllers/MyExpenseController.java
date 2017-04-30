@@ -7,6 +7,7 @@ import com.asifsid88.myexpense.model.Response;
 import com.asifsid88.myexpense.constants.ResponseStatus;
 import com.asifsid88.myexpense.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +28,10 @@ public class MyExpenseController {
 
     @RequestMapping(value = WebURLs.GET_EXPENSE_BY_ID, method = RequestMethod.GET)
     public @ResponseBody Response getExpenseById() {
-
-        return ResponseBuilder.buildResponse(ResponseStatus.COMPLETE, new Expense());
+        Expense expense = new Expense();
+        expense.setExpenseId("123");
+        
+        return ResponseBuilder.buildResponse(ResponseStatus.COMPLETE, expense);
     }
 
 
