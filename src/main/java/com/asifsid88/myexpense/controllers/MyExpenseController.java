@@ -1,22 +1,23 @@
 package com.asifsid88.myexpense.controllers;
 
+import com.asifsid88.myexpense.constants.ResponseStatus;
 import com.asifsid88.myexpense.constants.WebURLs;
 import com.asifsid88.myexpense.helper.ResponseBuilder;
 import com.asifsid88.myexpense.model.Expense;
 import com.asifsid88.myexpense.model.Response;
-import com.asifsid88.myexpense.constants.ResponseStatus;
 import com.asifsid88.myexpense.services.ExpenseService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by mhussaa on 4/30/17.
  */
 @Controller
+@Log4j2
 public class MyExpenseController {
 
     private ExpenseService expenseService;
@@ -27,10 +28,8 @@ public class MyExpenseController {
     }
 
     @RequestMapping(value = WebURLs.GET_EXPENSE_BY_ID, method = RequestMethod.GET)
-    public @ResponseBody Response getExpenseById() {
-        Expense expense = new Expense();
-        expense.setExpenseId("123");
-        
+    public @ResponseBody Response getExpenseById(@PathVariable(name = "expenseId") String expenseId) {
+        Expense expense = expenseService.getExpenseById(expenseId);
         return ResponseBuilder.buildResponse(ResponseStatus.COMPLETE, expense);
     }
 

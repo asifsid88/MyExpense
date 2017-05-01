@@ -1,8 +1,8 @@
 package com.asifsid88.myexpense.helper;
 
+import com.asifsid88.myexpense.constants.ResponseStatus;
 import com.asifsid88.myexpense.model.IModel;
 import com.asifsid88.myexpense.model.Response;
-import com.asifsid88.myexpense.constants.ResponseStatus;
 
 /**
  * Created by mhussaa on 4/30/17.
