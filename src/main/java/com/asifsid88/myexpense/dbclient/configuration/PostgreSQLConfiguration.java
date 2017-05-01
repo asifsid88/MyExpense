@@ -43,7 +43,7 @@ public class PostgreSQLConfiguration {
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource);
-        
+
         return jdbcTemplate;
     }
 }
