@@ -1,6 +1,6 @@
 package com.asifsid88.myexpense.services;
 
-import com.asifsid88.myexpense.dbclient.dao.ExpenseDAO;
+import com.asifsid88.myexpense.dal.dao.ExpenseDAO;
 import com.asifsid88.myexpense.model.Expense;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

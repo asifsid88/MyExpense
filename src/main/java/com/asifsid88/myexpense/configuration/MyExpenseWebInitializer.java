@@ -1,6 +1,5 @@
 package com.asifsid88.myexpense.configuration;
 
-import com.asifsid88.configuration.SystemPropertyConfiguration;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -26,8 +25,7 @@ public class MyExpenseWebInitializer extends AbstractAnnotationConfigDispatcherS
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        log.info("Loading SystemPropertyConfiguration");
-        return new Class<?>[] { SystemPropertyConfiguration.class };
+        return new Class<?>[] { };
     }
 
     @Override
