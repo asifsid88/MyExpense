@@ -14,7 +14,6 @@ public class MyExpenseWebInitializer extends AbstractAnnotationConfigDispatcherS
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        log.info("Loading SpringWebConfig");
         return new Class<?>[] { SpringWebConfig.class };
     }
 

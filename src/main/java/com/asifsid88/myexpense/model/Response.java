@@ -9,5 +9,5 @@ import lombok.Data;
 public class Response {
     private int status;
     private String message;
-    private IModel data;
+    private Object data;
 }

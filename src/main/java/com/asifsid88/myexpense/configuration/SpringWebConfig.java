@@ -3,6 +3,7 @@ package com.asifsid88.myexpense.configuration;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @Configuration
 @ComponentScan({"com.asifsid88.myexpense"})
+@EnableTransactionManagement
 @PropertySources(
     @PropertySource("classpath:properties/${env}.properties")
 )

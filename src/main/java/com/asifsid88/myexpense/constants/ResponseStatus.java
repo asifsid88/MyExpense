@@ -4,8 +4,8 @@ package com.asifsid88.myexpense.constants;
  * Created by mhussaa on 4/30/17.
  */
 public enum ResponseStatus {
-    ERROR(500, "Internal Server Error"),
-    COMPLETE(200, "Success");
+    FAIL(500, "Internal Server Error"),
+    OK(200, "Success");
 
     private int code;
     private String description;

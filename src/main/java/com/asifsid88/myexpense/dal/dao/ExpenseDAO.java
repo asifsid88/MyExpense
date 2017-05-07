@@ -1,43 +1,28 @@
 package com.asifsid88.myexpense.dal.dao;
 
-import com.asifsid88.myexpense.dal.CustomHibernateDaoSupport;
-import com.asifsid88.myexpense.model.Expense;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import lombok.Data;
 
-import java.util.List;
+import javax.persistence.*;
 
 /**
- * Created by mhussaa on 5/1/17.
+ * Created by mhussaa on 4/30/17.
  */
-@Repository
-public class ExpenseDAO extends CustomHibernateDaoSupport {
+@Data
+@Entity
+@Table(name = "Expense")
+public class ExpenseDAO implements IDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "expense_id", unique = true, nullable = false)
+    private String expenseId;
 
-    @Autowired
-    public ExpenseDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public void save(Expense expense){
-        getHibernateTemplate().save(expense);
-    }
-
-    public void update(Expense expense){
-        getHibernateTemplate().update(expense);
-    }
-
-    public void delete(Expense expense){
-        getHibernateTemplate().delete(expense);
-    }
-
-    public Expense findByExpenseId(String expenseId){
-        List list = getHibernateTemplate().find(
-                "from Expense where expenseId=?",expenseId
-        );
-        return (Expense)list.get(0);
-    }
-
+    private String expenseType;
+    private String amount;
+    private String description;
+    private String dateOfExpense;
+    private String expenseCreationDate;
+    private String expenseModifiedDate;
+    private String comment;
+    private String userId;
 }

@@ -12,7 +12,8 @@ public enum Properties {
     HIBERNATE_DIALECT("hibernate.dialect"),
     HIBERNATE_CREATE_MODE("hibernate.hbm2ddl.auto"),
     HIBERNATE_SHOW_SQL("hibernate.show_sql"),
-    HIBERNATE_CONNECTION_POOL_SIZE("hibernate.connection.pool_size");
+    HIBERNATE_CONNECTION_POOL_SIZE("hibernate.connection.pool_size"),
+    HIBERNATE_CURRENT_SESSION_CONTEXT_CLASS("thread");
 
     private String propertyName;
 
