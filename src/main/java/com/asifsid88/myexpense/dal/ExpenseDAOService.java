@@ -19,8 +19,8 @@ public class ExpenseDAOService {
         this.daoService = daoService;
     }
 
-    public void save(ExpenseDAO expense){
-        daoService.getCurrentSession().save(expense);
+    public String save(ExpenseDAO expense){
+        return String.valueOf(daoService.getCurrentSession().save(expense));
     }
 
     public void update(ExpenseDAO expense){

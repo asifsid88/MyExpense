@@ -31,10 +31,9 @@ public class ExpenseController {
         return ResponseBuilder.buildResponse(ResponseStatus.OK, expense);
     }
 
-
+    @CrossOrigin
     @RequestMapping(value = WebURLs.CREATE_EXPENSE, method = RequestMethod.POST)
     public @ResponseBody Response createExpense(@RequestBody Expense expense) {
-        log.info("Payload: {}", expense);
         String result = expenseService.createExpense(expense);
         return ResponseBuilder.buildResponse(ResponseStatus.OK, result);
     }

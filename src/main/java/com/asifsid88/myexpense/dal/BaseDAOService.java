@@ -18,7 +18,7 @@ public class BaseDAOService {
         this.sessionFactory = sessionFactory;
     }
 
-    public Session getCurrentSession() {
+    Session getCurrentSession() {
         return this.sessionFactory.getCurrentSession();
     }
 }

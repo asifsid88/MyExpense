@@ -3,4 +3,4 @@ MyExpense.iml
 deploy-local.sh
 target/
 temp.txt
-
+.DS_Store
