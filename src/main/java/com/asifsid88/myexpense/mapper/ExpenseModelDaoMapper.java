@@ -1,6 +1,5 @@
 package com.asifsid88.myexpense.mapper;
 
-import com.asifsid88.myexpense.constants.ExpenseType;
 import com.asifsid88.myexpense.dal.dao.ExpenseDAO;
 import com.asifsid88.myexpense.model.Expense;
 import org.springframework.stereotype.Component;

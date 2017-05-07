@@ -1,6 +1,5 @@
 package com.asifsid88.myexpense.model;
 
-import com.asifsid88.myexpense.constants.ExpenseType;
 import com.google.gson.Gson;
 import lombok.Data;
 

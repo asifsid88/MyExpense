@@ -25,7 +25,6 @@ public class ExpenseService {
     }
 
     public String createExpense(Expense expense) {
-        log.debug("Creating expense: {}" + expense);
         ExpenseDAO expenseDAO = expenseModelDaoMapper.toDao(expense);
         expenseDAOService.save(expenseDAO);
 
@@ -33,9 +32,7 @@ public class ExpenseService {
     }
 
     public Expense getExpenseById(String expenseId) {
-        log.debug("Find Expense By Id: {}", expenseId);
         ExpenseDAO expenseDAO = expenseDAOService.findByExpenseId(expenseId);
-        log.debug("Found ExpenseDAO: {}", expenseDAO);
         return expenseModelDaoMapper.toModel(expenseDAO);
     }
 }

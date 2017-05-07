@@ -1,6 +1,5 @@
 package com.asifsid88.myexpense.dal;
 
-import com.asifsid88.myexpense.dal.dao.IDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,5 @@ public class BaseDAOService {
 
     public Session getCurrentSession() {
         return this.sessionFactory.getCurrentSession();
-    }
-
-    public void saveOrUpdate(IDao dao) {
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.saveOrUpdate(dao);
-        session.getTransaction().commit();
     }
 }

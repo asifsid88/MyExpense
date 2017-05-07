@@ -20,7 +20,7 @@ public class ExpenseDAOService {
     }
 
     public void save(ExpenseDAO expense){
-        daoService.saveOrUpdate(expense);
+        daoService.getCurrentSession().save(expense);
     }
 
     public void update(ExpenseDAO expense){
