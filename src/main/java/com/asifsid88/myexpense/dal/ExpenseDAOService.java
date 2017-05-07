@@ -32,6 +32,6 @@ public class ExpenseDAOService {
     }
 
     public ExpenseDAO findByExpenseId(String expenseId){
-        return daoService.getCurrentSession().get(ExpenseDAO.class, expenseId);
+        return daoService.getCurrentSession().get(ExpenseDAO.class, Long.parseLong(expenseId));
     }
 }

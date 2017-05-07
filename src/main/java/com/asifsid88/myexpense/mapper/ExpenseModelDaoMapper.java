@@ -13,7 +13,11 @@ public class ExpenseModelDaoMapper implements ModelDaoMapper<ExpenseDAO, Expense
         if(model == null) return null;
 
         ExpenseDAO dao = new ExpenseDAO();
-        dao.setExpenseId(model.getExpenseId());
+
+        if(model.getExpenseId() != null) {
+            dao.setExpenseId(Long.parseLong(model.getExpenseId()));
+        }
+
         dao.setExpenseType(model.getExpenseType());
         dao.setAmount(model.getAmount());
         dao.setDescription(model.getDescription());
@@ -30,7 +34,7 @@ public class ExpenseModelDaoMapper implements ModelDaoMapper<ExpenseDAO, Expense
         if(dao == null) return null;
 
         Expense model = new Expense();
-        model.setExpenseId(dao.getExpenseId());
+        model.setExpenseId(String.valueOf(dao.getExpenseId()));
         model.setExpenseType(dao.getExpenseType());
         model.setAmount(dao.getAmount());
         model.setDescription(dao.getDescription());
