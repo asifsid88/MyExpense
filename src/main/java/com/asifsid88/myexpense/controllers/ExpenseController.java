@@ -45,7 +45,7 @@ public class ExpenseController {
         Expense createdExpense = expenseService.createExpense(expense);
 
         Response response;
-        if(createdExpense != null) {
+        if(createdExpense == null) {
             response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
         } else {
             response = ResponseBuilder.buildResponse(ResponseStatus.OK, createdExpense);
