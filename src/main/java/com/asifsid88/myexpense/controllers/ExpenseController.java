@@ -28,14 +28,30 @@ public class ExpenseController {
     @RequestMapping(value = WebURLs.GET_EXPENSE_BY_ID, method = RequestMethod.GET)
     public @ResponseBody Response getExpenseById(@PathVariable(name = "expenseId") String expenseId) {
         Expense expense = expenseService.getExpenseById(expenseId);
-        return ResponseBuilder.buildResponse(ResponseStatus.OK, expense);
+
+        Response response;
+        if(expense == null) {
+            response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
+        } else {
+            response = ResponseBuilder.buildResponse(ResponseStatus.OK, expense);
+        }
+
+        return response;
     }
 
     @CrossOrigin
     @RequestMapping(value = WebURLs.CREATE_EXPENSE, method = RequestMethod.POST)
     public @ResponseBody Response createExpense(@RequestBody Expense expense) {
-        String result = expenseService.createExpense(expense);
-        return ResponseBuilder.buildResponse(ResponseStatus.OK, result);
+        Expense createdExpense = expenseService.createExpense(expense);
+
+        Response response;
+        if(createdExpense != null) {
+            response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
+        } else {
+            response = ResponseBuilder.buildResponse(ResponseStatus.OK, createdExpense);
+        }
+
+        return response;
     }
 
 

@@ -24,9 +24,10 @@ public class ExpenseService {
         this.expenseModelDaoMapper = expenseModelDaoMapper;
     }
 
-    public String createExpense(Expense expense) {
+    public Expense createExpense(Expense expense) {
         ExpenseDAO expenseDAO = expenseModelDaoMapper.toDao(expense);
-        return expenseDAOService.save(expenseDAO);
+        ExpenseDAO createdExpenseDAO = expenseDAOService.save(expenseDAO);
+        return expenseModelDaoMapper.toModel(createdExpenseDAO);
     }
 
     public Expense getExpenseById(String expenseId) {

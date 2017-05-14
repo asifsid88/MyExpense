@@ -39,10 +39,9 @@ $(document).ready(function() {
                 "Content-Type": "application/json"
             },
             data: JSON.stringify(getFormData($("#create-expense"))),
-            success: function(data) {
-                //var result = $.parseJSON(data);
-                console.log(result);
-                $("#message").html("Successfully Added!");
+            success: function(response) {
+                console.log(response);
+                $("#message").html(response);
             },
             error: function(data) {
                 console.log("error");
