@@ -41,7 +41,7 @@ $(document).ready(function() {
             data: JSON.stringify(getFormData($("#create-expense"))),
             success: function(response) {
                 console.log(response);
-                $("#message").html(response);
+                $("#message").html("Created expense with ExpenseId: " + response.data.expenseId);
             },
             error: function(data) {
                 console.log("error");
