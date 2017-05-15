@@ -34,4 +34,10 @@ public class ExpenseService {
         ExpenseDAO expenseDAO = expenseDAOService.findByExpenseId(expenseId);
         return expenseModelDaoMapper.toModel(expenseDAO);
     }
+
+    public Expense updateExpense(Expense expense) {
+        ExpenseDAO expenseDAO = expenseModelDaoMapper.toDao(expense);
+        ExpenseDAO updatedExpenseDAO = expenseDAOService.update(expenseDAO);
+        return expenseModelDaoMapper.toModel(updatedExpenseDAO);
+    }
 }

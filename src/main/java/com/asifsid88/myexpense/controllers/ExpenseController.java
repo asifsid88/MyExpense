@@ -28,37 +28,21 @@ public class ExpenseController {
     @RequestMapping(value = WebURLs.GET_EXPENSE_BY_ID, method = RequestMethod.GET)
     public @ResponseBody Response getExpenseById(@PathVariable(name = "expenseId") String expenseId) {
         Expense expense = expenseService.getExpenseById(expenseId);
-
-        Response response;
-        if(expense == null) {
-            response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
-        } else {
-            response = ResponseBuilder.buildResponse(ResponseStatus.OK, expense);
-        }
-
-        return response;
+        return buildResponse(expense);
     }
 
     @CrossOrigin
     @RequestMapping(value = WebURLs.CREATE_EXPENSE, method = RequestMethod.POST)
     public @ResponseBody Response createExpense(@RequestBody Expense expense) {
         Expense createdExpense = expenseService.createExpense(expense);
-
-        Response response;
-        if(createdExpense == null) {
-            response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
-        } else {
-            response = ResponseBuilder.buildResponse(ResponseStatus.OK, createdExpense);
-        }
-
-        return response;
+        return buildResponse(createdExpense);
     }
 
 
     @RequestMapping(value = WebURLs.UPDATE_EXPENSE, method = RequestMethod.POST)
-    public @ResponseBody Response updateExpense() {
-
-        return ResponseBuilder.buildResponse(ResponseStatus.OK, new Expense());
+    public @ResponseBody Response updateExpense(@RequestBody Expense expense) {
+        Expense updatedExpense = expenseService.updateExpense(expense);
+        return buildResponse(updatedExpense);
     }
 
 
@@ -73,5 +57,16 @@ public class ExpenseController {
     public @ResponseBody Response getAllExpenses() {
 
         return ResponseBuilder.buildResponse(ResponseStatus.OK, new Expense());
+    }
+
+    private Response buildResponse(Expense expense) {
+        Response response;
+        if(expense == null) {
+            response = ResponseBuilder.buildErrorResponse(ResponseStatus.FAIL);
+        } else {
+            response = ResponseBuilder.buildResponse(ResponseStatus.OK, expense);
+        }
+
+        return response;
     }
 }
