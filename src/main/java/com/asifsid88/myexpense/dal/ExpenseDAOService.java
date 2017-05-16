@@ -1,13 +1,11 @@
 package com.asifsid88.myexpense.dal;
 
 import com.asifsid88.myexpense.dal.dao.ExpenseDAO;
+import com.asifsid88.myexpense.helper.Utility;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  * Created by mhussaa on 5/1/17.
@@ -27,7 +25,7 @@ public class ExpenseDAOService {
     public ExpenseDAO save(final ExpenseDAO expense) {
         ExpenseDAO createdExpense = null;
         try {
-            expense.setExpenseCreationDate(getCurrentTime());
+            expense.setExpenseCreationDate(Utility.getCurrentTime());
             final String expenseId = String.valueOf(daoService.getCurrentSession().save(expense));
             if(expenseId != null) {
                 createdExpense = findByExpenseId(expenseId);
@@ -110,18 +108,10 @@ public class ExpenseDAOService {
             mergeExpense.setExpenseType(oldExpense.getExpenseType());
         }
 
-        mergeExpense.setExpenseModifiedDate(getCurrentTime());
+        mergeExpense.setExpenseModifiedDate(Utility.getCurrentTime());
         mergeExpense.setExpenseCreationDate(oldExpense.getExpenseCreationDate());
         mergeExpense.setUserId(oldExpense.getUserId());
 
         return mergeExpense;
-    }
-
-    private String getCurrentTime() {
-        final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        return dateFormat.format(calendar.getTime());
     }
 }
