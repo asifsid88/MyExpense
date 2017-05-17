@@ -16,9 +16,9 @@ Expense Type:
     <option value="Netbanking">Netbanking</option>
 </select>
 </br>
-Amount: <input type="text" name="amount" id="amount" /></br>
-Description: <input type="text" name="description" id="description" /></br>
-Comment: <input type="text" name="comment" id="comment" /></br>
+Amount: <input type="text" name="amount" id="amount" value="500" /></br>
+Description: <textarea name="description" id="description"></textarea></br>
+Comment: <textarea name="comment" id="comment"></textarea></br>
 
 <input type="button" value="Create" name="create" id="create" />
 <input type="reset" value="Reset" name="reset" id="reset" />
