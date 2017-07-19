@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by mhussaa on 4/30/17.
  */
@@ -33,6 +35,11 @@ public class ExpenseService {
     public Expense getExpenseById(String expenseId) {
         ExpenseDAO expenseDAO = expenseDAOService.findByExpenseId(expenseId);
         return expenseModelDaoMapper.toModel(expenseDAO);
+    }
+
+    public List<Expense> getExpenseListOfSize(int size) {
+        List<ExpenseDAO> expenseDAOList = expenseDAOService.findExpenseListOfSize(size);
+        return expenseModelDaoMapper.toModelList(expenseDAOList);
     }
 
     public Expense updateExpense(Expense expense) {

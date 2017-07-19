@@ -1,6 +1,7 @@
 package com.asifsid88.myexpense.helper;
 
 import com.asifsid88.myexpense.constants.ResponseStatus;
+import com.asifsid88.myexpense.model.Expense;
 import com.asifsid88.myexpense.model.IModel;
 import com.asifsid88.myexpense.model.Response;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class ResponseBuilder {
 
-    public static Response buildResponse(ResponseStatus responseStatus, List<IModel> object) {
+    public static Response buildResponse(ResponseStatus responseStatus, List<Expense> object) {
         Response response = new Response();
         response.setStatus(responseStatus.getCode());
         response.setMessage(responseStatus.getDescription());

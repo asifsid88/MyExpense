@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by mhussaa on 5/1/17.
  */
@@ -72,6 +74,17 @@ public class ExpenseDAOService {
         }
 
         return expenseDAO;
+    }
+
+    public List<ExpenseDAO> findExpenseListOfSize(final int size) {
+        List<ExpenseDAO> expenseDAOList = null;
+        try {
+            expenseDAOList = daoService.getCurrentSession().createQuery("from ExpenseDAO").setMaxResults(size).list();
+        } catch(Exception e) {
+            log.error("Exception while getting expenseList of given size:{}. Exception:{}", size, e);
+        }
+
+        return expenseDAOList;
     }
 
     private ExpenseDAO mergeExpense(final ExpenseDAO oldExpense, final ExpenseDAO newExpense) {
